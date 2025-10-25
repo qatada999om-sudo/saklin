@@ -1,0 +1,175 @@
+openapi: 3.0.3
+info:
+  title: Saklin API
+  version: 0.1.0
+servers:
+  - url: https://api.saklin.app/v1
+paths:
+  /auth/otp/send:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: { phone: { type: string } }
+      responses:
+        '200': { description: OTP sent }
+  /auth/otp/verify:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: { phone: { type: string }, code: { type: string } }
+      responses:
+        '200': { description: Verified }
+  /zones/nearby:
+    get:
+      parameters:
+        - in: query
+          name: lat
+          schema: { type: number }
+        - in: query
+          name: lng
+          schema: { type: number }
+      responses:
+        '200':
+          description: nearest zone
+          content:
+            application/json:
+              schema:
+                type: object
+                properties: { zone_id: { type: integer }, name: { type: string } }
+  /stores:
+    get:
+      parameters:
+        - in: query
+          name: zone_id
+          schema: { type: integer }
+        - in: query
+          name: type
+          schema: { type: string, enum: [grocery, pharmacy, market, water] }
+        - in: query
+          name: open_now
+          schema: { type: boolean }
+      responses:
+        '200': { description: stores list }
+  /products:
+    get:
+      parameters:
+        - in: query
+          name: store_id
+          schema: { type: integer }
+        - in: query
+          name: query
+          schema: { type: string }
+        - in: query
+          name: category
+          schema: { type: integer }
+      responses:
+        '200': { description: products list }
+  /orders/checkout:
+    post:
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CheckoutRequest'
+      responses:
+        '200':
+          description: order created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckoutResponse'
+  /orders/{id}/substitutions:
+    post:
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SubstitutionRequest'
+      responses:
+        '200': { description: substitution approved }
+  /rma:
+    post:
+      summary: فتح طلب RMA (DOA/ضمان/إرجاع)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                order_id: { type: integer }
+                order_item_id: { type: integer }
+                type: { type: string, enum: [DOA, Warranty, Return] }
+                reason: { type: string }
+                serial_or_imei: { type: string }
+      responses:
+        '200': { description: RMA opened }
+  /rma/{id}:
+    get:
+      summary: حالة طلب RMA
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: RMA status }
+  /warranty/{product_id}:
+    get:
+      summary: معلومات الضمان لمنتج
+      parameters:
+        - in: path
+          name: product_id
+          required: true
+          schema: { type: integer }
+      responses:
+        '200': { description: Warranty info }
+components:
+  schemas:
+    CheckoutRequest:
+      type: object
+      properties:
+        user_id: { type: integer }
+        store_id: { type: integer }
+        address_id: { type: integer }
+        payment_method: { type: string, enum: [mpgs, apple_pay, google_pay, cod, wallet] }
+        items:
+          type: array
+          items:
+            type: object
+            properties: { product_id: { type: integer }, qty: { type: integer } }
+        schedule: { type: string, nullable: true }
+        promo_code: { type: string, nullable: true }
+    CheckoutResponse:
+      type: object
+      properties:
+        order_id: { type: integer }
+        status: { type: string }
+        total: { type: number, format: float }
+        mpgs_session:
+          type: object
+          properties: { id: { type: string }, redirect_url: { type: string } }
+    SubstitutionRequest:
+      type: object
+      properties:
+        item_id: { type: integer }
+        proposed_substitutes:
+          type: array
+          items:
+            type: object
+            properties: { product_id: { type: integer }, photo: { type: string } }

@@ -1,0 +1,7 @@
+id,store_id,category_id,name,brand,sku,barcode,price,vat_rate,is_otc,image_url,stock_qty,substitute_group
+901,12,10,حليب طويل الأجل 1L,Almarai,UHT1L-ALM,628100605001,0.59,5,false,https://img.saklin.om/p/901.jpg,120,milk_uht_1l
+902,12,11,مياه 1.5L (6),Barka,WAT15-6,629100605111,0.79,5,false,https://img.saklin.om/p/902.jpg,80,water_1_5l_pack
+904,22,20,باراسيتامول 500mg 24 قرص,GSK,OTC-PARA-24,501600370,0.85,0,true,https://img.saklin.om/p/904.jpg,40,otc_paracetamol_500
+1001,32,31,هاتف ذكي Galaxy A15 5G 128GB,Samsung,SM-A15-128,880609123001,69.9,5,false,https://img.saklin.om/e/1001.jpg,25,
+1002,32,31,iPhone SE 64GB (2022),Apple,IP-SE-64-22,194253123000,149.9,5,false,https://img.saklin.om/e/1002.jpg,10,
+1003,32,32,باور بنك 20,000mAh,Anker,ANK-PB20000,194644123111,14.9,5,false,https://img.saklin.om/e/1003.jpg,60,

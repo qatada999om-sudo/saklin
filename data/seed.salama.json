@@ -1,0 +1,188 @@
+{
+  "zones": [
+    {
+      "id": 1,
+      "name": "صلالة-المركز",
+      "center": [
+        17.0196,
+        54.0983
+      ],
+      "radius_km": 6
+    },
+    {
+      "id": 2,
+      "name": "صلالة-شرق",
+      "center": [
+        17.0268,
+        54.1275
+      ],
+      "radius_km": 6
+    },
+    {
+      "id": 3,
+      "name": "صلالة-غرب",
+      "center": [
+        17.0105,
+        54.063
+      ],
+      "radius_km": 6
+    }
+  ],
+  "stores": [
+    {
+      "id": 12,
+      "owner_id": 2,
+      "type": "grocery",
+      "name": "هايبر الجنوب",
+      "zone_id": 1,
+      "open_hours": {
+        "daily": "08:00-23:30"
+      }
+    },
+    {
+      "id": 22,
+      "owner_id": 3,
+      "type": "pharmacy",
+      "name": "صيدلية الأمان",
+      "zone_id": 1,
+      "open_hours": {
+        "daily": "09:00-22:00"
+      }
+    },
+    {
+      "id": 32,
+      "owner_id": 5,
+      "type": "market",
+      "name": "تيك ساكلن للإلكترونيات",
+      "zone_id": 1,
+      "open_hours": {
+        "daily": "10:00-22:00"
+      }
+    }
+  ],
+  "categories": [
+    {
+      "id": 10,
+      "name": "حليب ومخبوزات"
+    },
+    {
+      "id": 11,
+      "name": "مياه ومشروبات"
+    },
+    {
+      "id": 12,
+      "name": "منظّفات"
+    },
+    {
+      "id": 13,
+      "name": "ورقيات"
+    },
+    {
+      "id": 20,
+      "name": "OTC صيدلية"
+    },
+    {
+      "id": 30,
+      "name": "إلكترونيات"
+    },
+    {
+      "id": 31,
+      "name": "هواتف ذكية",
+      "parent_id": 30
+    },
+    {
+      "id": 32,
+      "name": "ملحقات الهواتف",
+      "parent_id": 30
+    }
+  ],
+  "products": [
+    {
+      "id": 901,
+      "store_id": 12,
+      "category_id": 10,
+      "name": "حليب طويل الأجل 1L",
+      "brand": "Almarai",
+      "sku": "UHT1L-ALM",
+      "barcode": "628100605001",
+      "price": 0.59,
+      "vat_rate": 5.0,
+      "is_otc": false,
+      "image_url": "https://img.saklin.om/p/901.jpg",
+      "stock_qty": 120,
+      "substitute_group": "milk_uht_1l"
+    },
+    {
+      "id": 902,
+      "store_id": 12,
+      "category_id": 11,
+      "name": "مياه 1.5L (6)",
+      "brand": "Barka",
+      "sku": "WAT15-6",
+      "barcode": "629100605111",
+      "price": 0.79,
+      "vat_rate": 5.0,
+      "is_otc": false,
+      "image_url": "https://img.saklin.om/p/902.jpg",
+      "stock_qty": 80,
+      "substitute_group": "water_1_5l_pack"
+    },
+    {
+      "id": 904,
+      "store_id": 22,
+      "category_id": 20,
+      "name": "باراسيتامول 500mg 24 قرص",
+      "brand": "GSK",
+      "sku": "OTC-PARA-24",
+      "barcode": "501600370",
+      "price": 0.85,
+      "vat_rate": 0.0,
+      "is_otc": true,
+      "image_url": "https://img.saklin.om/p/904.jpg",
+      "stock_qty": 40,
+      "substitute_group": "otc_paracetamol_500"
+    },
+    {
+      "id": 1001,
+      "store_id": 32,
+      "category_id": 31,
+      "name": "هاتف ذكي Galaxy A15 5G 128GB",
+      "brand": "Samsung",
+      "sku": "SM-A15-128",
+      "barcode": "880609123001",
+      "price": 69.9,
+      "vat_rate": 5.0,
+      "is_otc": false,
+      "image_url": "https://img.saklin.om/e/1001.jpg",
+      "stock_qty": 25
+    },
+    {
+      "id": 1002,
+      "store_id": 32,
+      "category_id": 31,
+      "name": "iPhone SE 64GB (2022)",
+      "brand": "Apple",
+      "sku": "IP-SE-64-22",
+      "barcode": "194253123000",
+      "price": 149.9,
+      "vat_rate": 5.0,
+      "is_otc": false,
+      "image_url": "https://img.saklin.om/e/1002.jpg",
+      "stock_qty": 10
+    },
+    {
+      "id": 1003,
+      "store_id": 32,
+      "category_id": 32,
+      "name": "باور بنك 20,000mAh",
+      "brand": "Anker",
+      "sku": "ANK-PB20000",
+      "barcode": "194644123111",
+      "price": 14.9,
+      "vat_rate": 5.0,
+      "is_otc": false,
+      "image_url": "https://img.saklin.om/e/1003.jpg",
+      "stock_qty": 60
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+id,owner_id,type,name,zone_id,open_hours,base_delivery_fee
+12,2,grocery,هايبر الجنوب,1,"{"daily":"08:00-23:30"}",0.5
+22,3,pharmacy,صيدلية الأمان,1,"{"daily":"09:00-22:00"}",0.5
+32,5,market,تيك ساكلن للإلكترونيات,1,"{"daily":"10:00-22:00"}",0.6
